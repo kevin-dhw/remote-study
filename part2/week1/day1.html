@@ -18,6 +18,9 @@
             { k: 'color', v: 'silver' },
             { k: 'type', v: 'tv' },
         ]
+        /*
+         编程题解答
+        */
         function convertObj(excludes) {
             let obj = {}
             excludes.forEach(({ k, v }) => {
@@ -44,6 +47,43 @@
     </script>
 </body>
 <!-- 
+英语解题过程
+        there is a variable items which is an array of objects. and then the excludes is an array of objects as well
+    for the excludes, each item has two properties, the value of first one is key, second one is value, I think we should 
+    convert it to the object, it's like key-value pair, maybe it's better for us to solve this problem.
+    so what we should do is just find the item in the items don't include  the item from excludes.
+      and the first thing we should do is convert the excludes to an object. so how can we do it.
+    we should define covertObj at first, which is function to convert the excludes to an object.
+    then we can define obj inside the covertObj, which is an empty object. becuase the excludes is an array. so we can use forEach 
+    to loop over it, because each item is object, and we need get all the value of the object. so we can 
+    use object destructuring here to get each value. so we can like obj squre bracket k equal to v, 
+    and finally return the obj, so that if we call this function, we will get an array in the way that we
+    soppuse to be.
+       and the second thing we should solve this problem. we also should define a function called
+    excludeItems at first. obviously it should recieve two parameters, items and exclues. and inside this function. 
+    the first thing is we should call the covertObj with the excludes to get an object. 
+    and according to the problem, we should get the item of the excludes which exclude one of the properties of the obj
+    so I think what we should do is like, if one of items of variable items include the property of obj.
+    we should remove this property. because the excludes is an array of objects. so if we directly
+    remove the item. it will modify the orginal array. so we should use json.parse json.stringfy here to
+    make a deep copy. and we will get a new array.
+      so the next thing we should do is traverse the items. because we should get all the keys of the object.
+    so we can use Object.keys. and then use for of to loop over each item. we just need use if statement here to
+      check if obj v is equal item v. if one of the items satisfy this condition. we need remove the item of arr.
+    and here, the thing we should notice is if we remove the item of arr. and the indexes will change.
+    we can't use the indexes of the variable items. and we can use findIndex to find the index of the current item from the arr.
+    and finally use the splice to remove it. and finally return the arr.
+      and we should can call the excludeItem, log the output to the console. so that we can check if it's correct.
+
+-->
+<!-- 
+  总结：
+  感觉老师英语题解过程不是很难，大致能听懂，障碍可能就是思路比较难想到
+  一些英语表达可能是我们英语思维还没有转换，其实很多都是比较简单的表达，
+  重点还是要学习一些表达，还有一些专业词汇，可能以前没学过
+-->
+<!-- 
+资料需要记得单词
 vocab:
     is made of 
     exclude
@@ -53,7 +93,7 @@ vocab:
     inefficient
     stringified
     exclusion
-
 -->
+
 
 </html>
