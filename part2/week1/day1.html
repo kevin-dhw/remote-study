@@ -25,15 +25,14 @@
             })
             return obj
         }
-
         function excludeItems(items, excludes) {
             let obj = convertObj(excludes)
             let arr = JSON.parse(JSON.stringify(items))
-            items.forEach((item, idx) => {
+            items.forEach((item) => {
                 for (let v of Object.keys(item)) {
                     if (obj[v] === item[v]) {
-                        console.log(obj[v], item[v], '111', idx);
-                        arr.splice(idx, 1)
+                        let resIdx = arr.findIndex(ele => ele[v] === obj[v])
+                        arr.splice(resIdx, 1)
                     }
                 }
             })
