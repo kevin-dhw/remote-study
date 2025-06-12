@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function plus(num) {
+            return num + 1
+        }
+        function times(num) {
+            return num * 2
+        }
+        function subtract(num) {
+            return num - 1
+        }
+        function composition(...fns) {
+            /*
+              make sure all the paramter we receive are funtion
+              otherwise, throw an error
+            */
+            for (fn of fns) {
+                if (typeof fn !== 'function') {
+                    throw Error(' fn must be funtion')
+                }
+            }
+            return (...args) => {
+                /*
+                 firstly call the first function, and then call it,
+                 define res to hold the result
+                */
+                let res = fns[0].call(this, ...args)
+                for (let i = 1; i < fns.length; i++) {
+                    res = fns[i].call(this, res)
+                }
+                return res
+            }
+        }
+        const composeFn = composition(plus, times, subtract)
+        console.log(composeFn(2), '1111');
+
+    </script>
+</body>
+
+</html>
