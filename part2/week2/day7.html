@@ -8,7 +8,21 @@
 </head>
 
 <body>
+    <script>
+        let arr = [-1, 2, 3, 10, 9]
+        function getLargestDifference(arr) {
+            if (!arr.length) return 0
+            let max = -Infinity
+            let min = Infinity
+            for (let n of arr) {
+                if (max < n) max = n
+                if (min > n) min = n
+            }
+            return max - min
+        }
+        console.log(getLargestDifference(arr), 'res');
 
+    </script>
 </body>
 
 </html>
