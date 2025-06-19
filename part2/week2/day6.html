@@ -8,7 +8,35 @@
 </head>
 
 <body>
+    <script>
+        function func(num) {
+            return num
+        }
+        const once = function (fn) {
+            let flag = false
+            let res
+            return (...args) => {
+                if (flag) return res
+                res = fn(...args)
+                flag = true
+            }
+        }
+        const onced = once(func)
 
+        console.log(onced(1));
+        console.log(onced(2));
+        /*
+        describe solution in Enlish
+          we fisrt should define once, which gonna recieve a funtion.
+        and inside of the once, we should define flag to keep track of if it's the first call.
+        and assign false to it as initialization. and define res to hold the return value.
+        and then we should return a anonymous function, which will accept some arguments.
+          inside of the anonymous function, we should check if the flag is false, if so, it means this is 
+        the second call, so we should return res. otherwise, we should call fn with the arguments, and set res equal
+        to the return value. 
+          finally we should set flag equal to ture.
+        */
+    </script>
 </body>
 
 </html>
